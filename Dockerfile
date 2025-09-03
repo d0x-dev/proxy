@@ -24,7 +24,7 @@ EOF
 # Expose proxy port (internal only, ngrok tunnels it)
 EXPOSE 8080
 
-# Start tinyproxy and ngrok (replace with your real ngrok token)
+# Start both services: tinyproxy in background, ngrok in foreground
 CMD tinyproxy -d && \
     ngrok config add-authtoken 30Xt1F8pXJpc2no2LdQF4xqrmjT_7rUnMXDivp3iiAKpV1fAc && \
-    ngrok http 8080
+    exec ngrok http 8080
